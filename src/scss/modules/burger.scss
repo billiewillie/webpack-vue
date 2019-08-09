@@ -1,0 +1,342 @@
+.burger {
+  width: 90px;
+  height: 90px;
+  cursor: pointer;
+  border-left: 1px solid $borderColor;
+  z-index: -1;
+  margin-left: 30px;
+
+  & .menu-switch{
+    width: 90px;
+    height: 90px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    transform: translateZ(0);
+    z-index: -1;
+    
+    & span,
+    &::before,
+    &::after{
+      content: '';
+      width: 26px;
+      height: 2px;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      margin-left: -13px;
+      margin-top: -1px;
+      background-color: $white;
+      transition: all 0.3s ease-in-out;
+      transform: translateZ(0);
+    }
+
+    & span{
+      width: 20px;
+    }
+
+    &::before{
+      margin-top: -8px;
+    }
+
+    &::after{
+      margin-top: 6px;
+    }
+  }
+
+  & #menu-switch {
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+  }
+
+  & #menu-switch:not(:checked) ~ .menu-switch:hover span {
+    width: 26px;
+  }
+
+  & #menu-switch:not(:checked) ~ .menu-switch:hover::before, 
+  & #menu-switch:not(:checked) ~ .menu-switch:hover::after {
+      width: 20px;
+  }
+
+  & #menu-switch:checked ~ .menu-switch {
+    background-color: $white;
+  }
+
+  & #menu-switch:checked ~ .menu-switch span {
+    opacity: 0;
+    width: 26px;
+    transform: rotate(350deg);
+  }
+
+  & #menu-switch:checked ~ .menu-switch::before,
+  & #menu-switch:checked ~ .menu-switch::after{
+    margin-top: -1px;
+    background-color: $headerColor;
+  }
+
+  & #menu-switch:checked ~ .menu-switch::before {
+      transform: rotate(45deg);
+  }
+
+  & #menu-switch:checked ~ .menu-switch::after {
+    transform: rotate(-45deg);
+}
+
+  & #navigation{
+    display: flex;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    top: 90px;
+    left: 0;
+    justify-content: center;
+    background: $white;
+    transition: all 0.3s ease-in-out;
+    transform: translate(0, 90px);
+    opacity: 0;
+    pointer-events: none;
+
+    & ul{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+      flex: auto;
+
+      & li{
+        transition: .2s;
+        margin-bottom: 10px;
+        a{
+          font-size: $fz8;
+          line-height: $lineHeight2;
+          text-transform: initial;
+        }
+
+        &.active,
+        &:hover{
+          & a{
+            color: $linkColor;
+          }
+        }
+      }
+    }
+  }
+
+  & .quick-contact{
+    flex-basis: inherit;
+
+    & a.logo{
+      position: relative;
+      transform: rotate(0deg);
+      flex-direction: column;
+      left: auto;
+      align-items: flex-start;
+      font-size: $fz13;
+      color: $headerColor;
+      display: none;
+
+      & span{
+        display: block;
+        margin-right: 0;
+      }
+
+      &:hover{
+        color: inherit;
+      }
+    }
+
+    & address{
+      font-style: normal;
+      font-family: $montserratFont;
+      margin: 2em 0;
+      color: $gray2;
+      font-size: $fz5;
+      line-height: 160%;
+    }
+
+    & .contacts{
+      font-style: normal;
+      font-family: $montserratFont;
+      color: $gray2;
+      font-size: $fz5;
+      line-height: 160%;
+
+      & a{
+        color: $stage;
+        font-weight: $semiBold;
+      }
+    }
+  }
+
+  & #menu-switch:checked ~ #navigation{
+    pointer-events: initial;
+    opacity: 1;
+    transform: translate(0, 0);
+    cursor: default;
+    flex-direction: column;
+  }
+}
+
+@media (min-width: 992px) {
+  .burger {
+    width: 100%;
+    left: 0;
+    height: 100px;
+    border-left: none;
+    order: 1;
+  
+    & .menu-switch{
+      width: 100px;
+      height: 100px;
+      position: absolute;
+      right: 0;
+      top: 0;
+      cursor: pointer;
+      transition: all 0.3s ease-in-out;
+      transform: translateZ(0);
+      background-color: $white;
+      
+      & span,
+      &::before,
+      &::after{
+        content: '';
+        width: 26px;
+        height: 2px;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        margin-left: -13px;
+        margin-top: -1px;
+        background-color: $titleColor;
+        transition: all 0.3s ease-in-out;
+        transform: translateZ(0);
+      }
+  
+      & span{
+        width: 20px;
+      }
+  
+      &::before{
+        margin-top: -8px;
+      }
+  
+      &::after{
+        margin-top: 6px;
+      }
+    }
+  
+    & #menu-switch:not(:checked) ~ .menu-switch:hover span {
+      width: 26px;
+    }
+  
+    & #menu-switch:not(:checked) ~ .menu-switch:hover::before, 
+    & #menu-switch:not(:checked) ~ .menu-switch:hover::after {
+        width: 20px;
+    }
+  
+    & #menu-switch:checked ~ .menu-switch {
+      background-color: $white;
+    }
+  
+    & #menu-switch:checked ~ .menu-switch span {
+      opacity: 0;
+      width: 26px;
+      transform: rotate(350deg);
+    }
+  
+    & #menu-switch:checked ~ .menu-switch::before,
+    & #menu-switch:checked ~ .menu-switch::after{
+      margin-top: -1px;
+      background-color: $headerColor;
+    }
+  
+    & #menu-switch:checked ~ .menu-switch::before {
+        transform: rotate(45deg);
+    }
+  
+    & #menu-switch:checked ~ .menu-switch::after {
+      transform: rotate(-45deg);
+    }
+
+    & #menu-switch:checked ~ #navigation{
+      flex-direction: row;
+    }
+  
+    & #navigation{
+      top: 0;
+      left: 100px;
+      transform: translate(100px, 0);
+      justify-content: space-around;
+      padding-top: 90px;
+
+      &>*{
+        min-height: 500px;
+      }
+
+      & ul {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        flex-basis: 50%;
+        justify-content: flex-start;
+
+        & li {
+          width: 400px;
+          padding: 2vh 0;
+          text-align: left;
+          margin-bottom: 0;
+        }
+      }
+
+      & .quick-contact{
+        flex-basis: 50%;
+
+        & a.logo{
+          position: relative;
+          transform: rotate(0deg);
+          flex-direction: column;
+          left: auto;
+          align-items: flex-start;
+          font-size: $fz13;
+          color: $headerColor;
+          display: block;
+
+          & span{
+            display: block;
+            margin-right: 0;
+          }
+
+          &:hover{
+            color: inherit;
+          }
+        }
+
+        & address{
+          font-style: normal;
+          font-family: $montserratFont;
+          margin: 2em 0;
+          color: $gray2;
+          font-size: $fz5;
+          line-height: 160%;
+        }
+
+        & .contacts{
+          font-style: normal;
+          font-family: $montserratFont;
+          color: $gray2;
+          font-size: $fz5;
+          line-height: 160%;
+
+          & a{
+            color: $stage;
+            font-weight: $semiBold;
+          }
+        }
+      }
+    }
+  }
+}
