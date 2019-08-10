@@ -1,15 +1,10 @@
-// import './js/main'
-// import './scss/main.scss'
-window.Vue = require('vue')
-import store from './store'
-Vue.component('example-component', require('./components/Example.vue').default)
+import Vue from 'vue'
+import App from './components/App.vue'
+import Home from './components/Home.vue'
 
-const app = new Vue({
-  data () {
-    return {
-      component: false,
-    }
-  },
-  store,
-  el: '#app'
+Vue.component('app-servers', Home)
+
+new Vue({
+  el: '#app',
+  render: h => h(App)
 })
